@@ -139,7 +139,7 @@ const WorkExperienceSection = () => {
           <Responsibilities>
             Managed automation frameworks for multiple clients, specializing in
             Playwright and Cypress. Expertise includes API testing, manual
-            testing, and UI testing using Java, Selenium, Rest Assured, JUnit,
+            testing, and UI testing using Java, Selenium, RestAssured, JUnit,
             and Maven. Fostered communication with product owners and
             developers to integrate testing seamlessly into SDLC, ensuring
             high-quality software delivery.

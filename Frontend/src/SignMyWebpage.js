@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import SignatureCanvas from "react-signature-canvas";
 import styled, { keyframes, css } from "styled-components";
 import { useInView } from "react-intersection-observer";
@@ -193,25 +193,70 @@ const SignMyWebpage = () => {
     threshold: 0.5,
   });
 
+  useEffect(() => {
+    const fetchSignatures = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/signatures");
+        if (!response.ok) {
+          throw new Error("Failed to fetch signatures");
+        }
+        const data = await response.json();
+        setSignatures(data);
+      } catch (error) {
+        console.error("Error fetching signatures:", error.message);
+      }
+    };
+    fetchSignatures();
+  }, []);
+
   const clearCanvas = () => {
     if (sigCanvas.current) {
       sigCanvas.current.clear();
     }
   };
 
-  const saveSignature = () => {
+  const saveSignature = async () => {
     if (sigCanvas.current.isEmpty()) {
       alert("Please provide a signature first.");
     } else {
-      setSignatures([...signatures, { id: Date.now(), name, signature: sigCanvas.current.toDataURL() }]);
-      setName("");
-      clearCanvas();
+      try {
+        const response = await fetch("http://localhost:5000/signatures", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, signature: sigCanvas.current.toDataURL() }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to save signature");
+        }
+
+        const newSignature = await response.json();
+        setSignatures([...signatures, newSignature]);
+        setName("");
+        clearCanvas();
+      } catch (error) {
+        console.error("Error saving signature:", error.message);
+      }
     }
   };
 
-  const deleteSignature = (id) => {
-    const updatedSignatures = signatures.filter((signature) => signature.id !== id);
-    setSignatures(updatedSignatures);
+  const deleteSignature = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/signatures/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete signature");
+      }
+
+      const updatedSignatures = signatures.filter((signature) => signature._id !== id);
+      setSignatures(updatedSignatures);
+    } catch (error) {
+      console.error("Error deleting signature:", error.message);
+    }
   };
 
   return (
@@ -223,7 +268,7 @@ const SignMyWebpage = () => {
           <SignatureCanvasBox>
             <SignatureCanvasStyled
               ref={sigCanvas}
-              penColor="white" /* White color for signature */
+              penColor="white" 
               canvasProps={{ width: 800, height: 120, className: "sigCanvas" }}
             />
           </SignatureCanvasBox>
@@ -239,10 +284,10 @@ const SignMyWebpage = () => {
         </SignatureWrapper>
         <SignatureDisplay>
           {signatures.map((signature) => (
-            <SignedBox key={signature.id}>
+            <SignedBox key={signature._id}>
               <div style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "10px" }}>{signature.name}</div>
               <SignatureImage src={signature.signature} alt="Signature" />
-              <DeleteButton onClick={() => deleteSignature(signature.id)}>Delete</DeleteButton>
+              <DeleteButton onClick={() => deleteSignature(signature._id)}>Delete</DeleteButton>
             </SignedBox>
           ))}
         </SignatureDisplay>

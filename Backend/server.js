@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Connect to MongoDB (replace 'your-database-name' with your actual database name)
-mongoose.connect('mongodb+srv://kemal:41504150aaA.@cluster0.om7383r.mongodb.net/your-database-name?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://kemal:41504150aaA.@cluster0.zw4acih.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

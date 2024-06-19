@@ -3,6 +3,7 @@ import SignatureCanvas from "react-signature-canvas";
 import styled, { keyframes, css } from "styled-components";
 import { useInView } from "react-intersection-observer";
 
+// Define keyframes for animations
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -29,6 +30,7 @@ const pulseAnimation = keyframes`
   }
 `;
 
+// Styled components
 const SignMyWebpageWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -108,12 +110,25 @@ const Controls = styled.div`
   margin-bottom: 20px;
 `;
 
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+`;
+
 const Input = styled.input`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
-  max-width: 300px;
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 const Button = styled.button`
@@ -170,9 +185,25 @@ const SignatureImage = styled.img`
   margin-top: 10px; /* Adjust top margin for better centering */
 `;
 
+const LoadingIndicator = styled.div`
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #fff;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+
+// Main Component
 const SignMyWebpage = () => {
   const [name, setName] = useState("");
   const [signatures, setSignatures] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const sigCanvas = useRef(null);
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -190,6 +221,8 @@ const SignMyWebpage = () => {
         setSignatures(data);
       } catch (error) {
         console.error("Error fetching signatures:", error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchSignatures();
@@ -242,23 +275,34 @@ const SignMyWebpage = () => {
             />
           </SignatureCanvasBox>
           <Controls>
-            <Input
-              type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Button onClick={saveSignature}>Save Signature</Button>
+            <InputGroup>
+              <Input
+                type="text"
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <ButtonGroup>
+                <Button onClick={saveSignature}>Save Signature</Button>
+                <Button onClick={clearCanvas}>Clear Signature</Button>
+              </ButtonGroup>
+            </InputGroup>
           </Controls>
         </SignatureWrapper>
-        <SignatureDisplay>
-          {signatures.map((signature) => (
-            <SignedBox key={signature._id}>
-              <div style={{ fontSize: "1.2rem", fontWeight: "bold", marginTop: "10px" }}>{signature.name}</div>
-              <SignatureImage src={signature.signature} alt="Signature" />
-            </SignedBox>
-          ))}
-        </SignatureDisplay>
+        {isLoading ? (
+          <LoadingIndicator />
+        ) : (
+          <SignatureDisplay>
+            {signatures.map((signature) => (
+              <SignedBox key={signature._id}>
+                <div style={{ fontSize: "1.2rem", fontWeight: "bold", marginTop: "10px" }}>
+                  {signature.name}
+                </div>
+                <SignatureImage src={signature.signature} alt="Signature" />
+              </SignedBox>
+            ))}
+          </SignatureDisplay>
+        )}
       </ContentWrapper>
     </SignMyWebpageWrapper>
   );

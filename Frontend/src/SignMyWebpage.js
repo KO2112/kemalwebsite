@@ -196,7 +196,7 @@ const SignMyWebpage = () => {
   useEffect(() => {
     const fetchSignatures = async () => {
       try {
-        const response = await fetch("http://localhost:5000/signatures");
+        const response = await fetch("https://your-backend-service.onrender.com/signatures");
         if (!response.ok) {
           throw new Error("Failed to fetch signatures");
         }
@@ -220,7 +220,7 @@ const SignMyWebpage = () => {
       alert("Please provide a signature first.");
     } else {
       try {
-        const response = await fetch("http://localhost:5000/signatures", {
+        const response = await fetch("https://your-backend-service.onrender.com/signatures", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -244,7 +244,7 @@ const SignMyWebpage = () => {
 
   const deleteSignature = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/signatures/${id}`, {
+      const response = await fetch(`https://your-backend-service.onrender.com/signatures/${id}`, {
         method: "DELETE",
       });
 

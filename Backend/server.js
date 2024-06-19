@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(cors());
 
-// Connect to MongoDB (replace 'Signutare' with your database name)
-mongoose.connect('mongodb://localhost:27017/Signutare', {
+// Connect to MongoDB (replace 'your-database-name' with your actual database name)
+mongoose.connect('mongodb+srv://kemal:41504150aaA.@cluster0.om7383r.mongodb.net/your-database-name?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

@@ -149,6 +149,7 @@ const SignedBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
   font-size: 1rem;
   color: #fff; /* White text color */
@@ -163,25 +164,10 @@ const SignedBox = styled.div`
 `;
 
 const SignatureImage = styled.img`
-  max-width: 100%;
-  max-height: 70%;
-`;
-
-const DeleteButton = styled.button`
-  align-self: flex-end;
-  font-size: 0.8rem;
-  color: white;
-  background-color: #ff6347;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-
-  &:hover {
-    background-color: #e5533d;
-    transform: scale(1.05);
-  }
+  width: 100%;
+  height: 70%;
+  object-fit: contain; /* Ensure the image fits within its container */
+  margin-top: 10px; /* Adjust top margin for better centering */
 `;
 
 const SignMyWebpage = () => {
@@ -242,23 +228,6 @@ const SignMyWebpage = () => {
     }
   };
 
-  const deleteSignature = async (id) => {
-    try {
-      const response = await fetch(`https://kemalwebsite.onrender.com/signatures/${id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete signature");
-      }
-
-      const updatedSignatures = signatures.filter((signature) => signature._id !== id);
-      setSignatures(updatedSignatures);
-    } catch (error) {
-      console.error("Error deleting signature:", error.message);
-    }
-  };
-
   return (
     <SignMyWebpageWrapper ref={ref}>
       <ContentWrapper isVisible={inView}>
@@ -268,7 +237,7 @@ const SignMyWebpage = () => {
           <SignatureCanvasBox>
             <SignatureCanvasStyled
               ref={sigCanvas}
-              penColor="white" 
+              penColor="white"
               canvasProps={{ width: 800, height: 120, className: "sigCanvas" }}
             />
           </SignatureCanvasBox>
@@ -285,9 +254,8 @@ const SignMyWebpage = () => {
         <SignatureDisplay>
           {signatures.map((signature) => (
             <SignedBox key={signature._id}>
-              <div style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "10px" }}>{signature.name}</div>
+              <div style={{ fontSize: "1.2rem", fontWeight: "bold", marginTop: "10px" }}>{signature.name}</div>
               <SignatureImage src={signature.signature} alt="Signature" />
-              <DeleteButton onClick={() => deleteSignature(signature._id)}>Delete</DeleteButton>
             </SignedBox>
           ))}
         </SignatureDisplay>

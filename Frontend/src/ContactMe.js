@@ -140,7 +140,7 @@ const ContactMeSection = () => {
           <span>{isPhoneVisible ? "+44 7419208820" : "Click to reveal"}</span>
         </PhoneNumber>
         <ContactItem>
-          <Button onClick={() => window.open("/path/to/your/cv.pdf", "_blank")}>
+          <Button onClick={() => window.open("https://drive.google.com/file/d/1I_fUhaYHjbvlarPUA8Hz1eWC0kKvLXSC/view?usp=drive_link")}>
             Download CV
           </Button>
         </ContactItem>

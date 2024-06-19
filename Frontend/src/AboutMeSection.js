@@ -51,6 +51,11 @@ const AboutMeSectionWrapper = styled.div`
   scroll-snap-align: start;
   background-color: #111;
   overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 20px 10px;
+  }
 `;
 
 const AboutContent = styled.div`
@@ -60,7 +65,12 @@ const AboutContent = styled.div`
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
   background-color: rgba(17, 17, 17, 0.9);
-  overflow: hidden; 
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    max-width: 100%;
+  }
 `;
 
 const AboutTitle = styled.h2`
@@ -71,6 +81,11 @@ const AboutTitle = styled.h2`
   display: inline-block;
   animation: ${(props) => (props.isVisible ? fadeIn : "none")} 1.7s ease;
   color: #ff6347;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
 `;
 
 const AboutText = styled.p`
@@ -79,6 +94,11 @@ const AboutText = styled.p`
   margin-bottom: 10px;
   animation: ${(props) => (props.isVisible ? slideInRight : "none")}
     ${(props) => props.delay}s ease;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
 `;
 
 const Highlight = styled.span`
@@ -91,26 +111,41 @@ const SliderWrapper = styled.div`
   align-items: center;
   width: 100%;
   overflow: hidden;
-  margin-top: 20px; 
+  margin-top: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
 `;
 
 const SliderItems = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
   ${(props) =>
     props.isVisible
       ? css`
           animation: ${scrolling} 10s linear infinite;
         `
       : "animation: none;"}
+
+  @media (max-width: 768px) {
+    gap: 10px;
+    animation: none; /* Disable scrolling animation on mobile */
+    flex-wrap: wrap;
+  }
 `;
 
 const SliderImage = styled.img`
-  width: 50px; 
-  height: auto; 
-  margin: 0 5px; 
+  width: 50px;
+  height: auto;
+  margin: 0 5px;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    margin: 5px;
+  }
 `;
 
 const AboutMeSection = () => {
@@ -129,7 +164,7 @@ const AboutMeSection = () => {
       <AboutContent>
         <AboutTitle isVisible={isInView}>About Me</AboutTitle>
         <AboutText isVisible={isInView} delay={0.5}>
-          I have over <Highlight>5+ years</Highlight> of experience as a QA
+          I have over <Highlight>6+ years</Highlight> of experience as a QA
           Automation Engineer - SDET and{" "}
           <Highlight>Software development</Highlight>, also, have worked
           extensively on automation, mostly website, API, mobile, and web
@@ -144,7 +179,8 @@ const AboutMeSection = () => {
         <AboutText isVisible={isInView} delay={0.9}>
           I have experience working on <Highlight>Agile projects</Highlight>{" "}
           and have worked closely with product owners, attending various
-          ceremonies such as sprint planning, Scrum, backlog grooming, sprint review, and retrospective.
+          ceremonies such as sprint planning, Scrum, backlog grooming, sprint
+          review, and retrospective.
         </AboutText>
         <AboutText isVisible={isInView} delay={1.1}>
           I have proven abilities in designing and implementing automation

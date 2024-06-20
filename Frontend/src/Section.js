@@ -23,7 +23,7 @@ const SectionWrapper = styled.div`
   text-align: center;
   scroll-snap-align: start;
   background-color: ${(props) => props.bgColor || "transparent"};
-  overflow-x: hidden; 
+  overflow-x: hidden;
 `;
 
 const Content = styled.div`
@@ -45,13 +45,10 @@ const ProfileImage = styled.img`
 const Name = styled.h1`
   margin: 0;
   font-size: 2.5rem;
-  opacity: 0; /* Initial opacity set to 0 */
-  animation: ${({ isVisible }) =>
-    isVisible
-      ? css`
-          ${fadeIn} 1s ease forwards
-        `
-      : "none"};
+  opacity: ${({ isVisible, isMobile }) => (isVisible || isMobile ? 1 : 0)};
+  transform: ${({ isVisible, isMobile }) =>
+    isVisible || isMobile ? "translateY(0)" : "translateY(20px)"};
+  transition: opacity 0.5s ease, transform 0.5s ease;
 `;
 
 const ProfileTitle = styled.h2`
@@ -65,8 +62,15 @@ const ProfileTitle = styled.h2`
 const Section = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -82,7 +86,10 @@ const Section = () => {
 
     observer.observe(sectionRef.current);
 
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -93,7 +100,9 @@ const Section = () => {
           src="https://i.ibb.co/8rpcCLT/1716893197794.jpg"
           alt="Profile Picture"
         />
-        <Name isVisible={isVisible}>Kemal Orhan</Name>
+        <Name isVisible={isVisible} isMobile={isMobile}>
+          Kemal Orhan
+        </Name>
       </Content>
     </SectionWrapper>
   );

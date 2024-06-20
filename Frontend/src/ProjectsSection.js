@@ -46,10 +46,10 @@ const Title = styled.h2`
   color: #fff;
   border-bottom: 3px solid #ff6347;
   display: inline-block;
-  animation: ${({ isVisible }) =>
-    isVisible &&
+  ${({ isVisible, isMobile }) =>
+    isVisible && !isMobile &&
     css`
-      ${fadeIn} 1s ease;
+      animation: ${fadeIn} 1s ease;
     `};
 `;
 
@@ -69,10 +69,10 @@ const ProjectCard = styled.div`
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: ${({ isVisible, delay }) =>
-    isVisible &&
+  ${({ isVisible, delay, isMobile }) =>
+    isVisible && !isMobile &&
     css`
-      ${fadeIn} ${delay}s ease;
+      animation: ${fadeIn} ${delay}s ease;
     `};
   &:hover {
     transform: scale(1.05);
@@ -124,6 +124,8 @@ const ProjectsSection = () => {
     threshold: 0.5,
   });
 
+  const isMobile = window.innerWidth <= 768;
+
   useEffect(() => {
     setIsInView(inView);
   }, [inView]);
@@ -131,9 +133,9 @@ const ProjectsSection = () => {
   return (
     <SectionWrapper ref={ref}>
       <ContentWrapper>
-        <Title isVisible={isInView}>Projects</Title>
+        <Title isVisible={isInView} isMobile={isMobile}>Projects</Title>
         <ProjectGrid>
-          <ProjectCard isVisible={isInView} delay={0.5}>
+          <ProjectCard isVisible={isInView} delay={0.5} isMobile={isMobile}>
             <ProjectTitle>My Website with React</ProjectTitle>
             <ProjectDescription>
               A personal website built using React.js to showcase my portfolio and projects.
@@ -142,7 +144,7 @@ const ProjectsSection = () => {
               View Project
             </ProjectLink>
           </ProjectCard>
-          <ProjectCard isVisible={isInView} delay={1}>
+          <ProjectCard isVisible={isInView} delay={1} isMobile={isMobile}>
             <ProjectTitle>Jira 2</ProjectTitle>
             <ProjectDescription>
               A clone of the popular project management tool, Jira, built to demonstrate my full-stack development skills.

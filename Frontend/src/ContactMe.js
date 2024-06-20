@@ -45,10 +45,10 @@ const ContentWrapper = styled.div`
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5));
   padding: 50px 30px;
   box-sizing: border-box;
-  animation: ${({ isVisible }) =>
-    isVisible &&
+  ${({ isVisible, isMobile }) =>
+    isVisible && !isMobile &&
     css`
-      ${fadeIn} 1s ease;
+      animation: ${fadeIn} 1s ease;
     `};
 `;
 
@@ -108,9 +108,20 @@ const PhoneNumber = styled.div`
 const ContactMeSection = () => {
   const [isPhoneVisible, setIsPhoneVisible] = useState(false);
   const { ref, inView } = useInView({
-    triggerOnce: false, 
+    triggerOnce: false,
     threshold: 0.5,
   });
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const togglePhoneVisibility = () => {
     setIsPhoneVisible(!isPhoneVisible);
@@ -118,7 +129,7 @@ const ContactMeSection = () => {
 
   return (
     <ContactSectionWrapper ref={ref}>
-      <ContentWrapper isVisible={inView}>
+      <ContentWrapper isVisible={inView} isMobile={isMobile}>
         <Title>Contact Me</Title>
         <ContactItem>
           <strong>Email:</strong>{" "}

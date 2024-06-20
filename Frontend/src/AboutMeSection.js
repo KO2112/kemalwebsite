@@ -89,7 +89,8 @@ const AboutTitle = styled.h2`
   padding-bottom: 10px;
   border-bottom: 3px solid #a0a0a0;
   display: inline-block;
-  animation: ${(props) => (props.isVisible ? fadeIn : "none")} 1.7s ease;
+  animation: ${(props) =>
+    props.isVisible && !props.isMobile ? fadeIn : "none"} 1.7s ease;
   color: #ff6347;
 
   @media (max-width: 1366px) {
@@ -107,7 +108,8 @@ const AboutText = styled.p`
   font-size: 1.2rem;
   line-height: 1.5;
   margin-bottom: 10px;
-  animation: ${(props) => (props.isVisible ? slideInRight : "none")}
+  animation: ${(props) =>
+    props.isVisible && !props.isMobile ? slideInRight : "none"}
     ${(props) => props.delay}s ease;
 
   @media (max-width: 1366px) {
@@ -147,7 +149,7 @@ const SliderItems = styled.div`
   align-items: center;
   gap: 15px;
   ${(props) =>
-    props.isVisible
+    props.isVisible && !props.isMobile
       ? css`
           animation: ${scrolling} 10s linear infinite;
         `
@@ -186,6 +188,8 @@ const AboutMeSection = () => {
     threshold: 0.5,
   });
 
+  const isMobile = window.innerWidth <= 768;
+
   useEffect(() => {
     setIsInView(inView);
   }, [inView]);
@@ -193,27 +197,29 @@ const AboutMeSection = () => {
   return (
     <AboutMeSectionWrapper ref={ref}>
       <AboutContent>
-        <AboutTitle isVisible={isInView}>About Me</AboutTitle>
-        <AboutText isVisible={isInView} delay={0.5}>
+        <AboutTitle isVisible={isInView} isMobile={isMobile}>
+          About Me
+        </AboutTitle>
+        <AboutText isVisible={isInView} delay={0.5} isMobile={isMobile}>
           I have over <Highlight>6+ years</Highlight> of experience as a QA
           Automation Engineer - SDET and{" "}
           <Highlight>Software development</Highlight>, also, have worked
           extensively on automation, mostly website, API, mobile, and web
           services applications.
         </AboutText>
-        <AboutText isVisible={isInView} delay={0.7}>
+        <AboutText isVisible={isInView} delay={0.7} isMobile={isMobile}>
           My knowledge and implementation skills in the{" "}
           <Highlight>Software Development Life Cycle (SDLC)</Highlight> and{" "}
           <Highlight>Software Testing Life Cycle (STLC)</Highlight> are
           excellent.
         </AboutText>
-        <AboutText isVisible={isInView} delay={0.9}>
+        <AboutText isVisible={isInView} delay={0.9} isMobile={isMobile}>
           I have experience working on <Highlight>Agile projects</Highlight>{" "}
           and have worked closely with product owners, attending various
           ceremonies such as sprint planning, Scrum, backlog grooming, sprint
           review, and retrospective.
         </AboutText>
-        <AboutText isVisible={isInView} delay={1.1}>
+        <AboutText isVisible={isInView} delay={1.1} isMobile={isMobile}>
           I have proven abilities in designing and implementing automation
           frameworks using tools such as{" "}
           <Highlight>
@@ -221,7 +227,7 @@ const AboutMeSection = () => {
           </Highlight>{" "}
           and <Highlight>Jenkins</Highlight>.
         </AboutText>
-        <AboutText isVisible={isInView} delay={1.3}>
+        <AboutText isVisible={isInView} delay={1.3} isMobile={isMobile}>
           I have gained experience working with various tools, including{" "}
           <Highlight>
             Java, Selenium WebDriver, Cypress, Playwright, Appium, Maven,
@@ -229,18 +235,18 @@ const AboutMeSection = () => {
           </Highlight>{" "}
           and many others.
         </AboutText>
-        <AboutText isVisible={isInView} delay={1.5}>
+        <AboutText isVisible={isInView} delay={1.5} isMobile={isMobile}>
           I also have good knowledge of{" "}
           <Highlight>Springboot, React, Unity</Highlight> applications and am
           able to participate in large and multi-platform projects as well.
         </AboutText>
-        <AboutText isVisible={isInView} delay={1.7}>
+        <AboutText isVisible={isInView} delay={1.7} isMobile={isMobile}>
           I'm a good communicator, I have good analytical and communication
           skills and can work independently with minimal supervision while
           also being able to function effectively as part of a team.
         </AboutText>
         <SliderWrapper>
-          <SliderItems isVisible={isInView}>
+          <SliderItems isVisible={isInView} isMobile={isMobile}>
             <SliderImage
               src="https://seeklogo.com/images/P/playwright-logo-22FA8B9E63-seeklogo.com.png"
               alt="Playwright"

@@ -42,7 +42,7 @@ const scrolling = keyframes`
 const AboutMeSectionWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,9 +51,14 @@ const AboutMeSectionWrapper = styled.div`
   scroll-snap-align: start;
   background-color: #111;
   overflow-x: hidden;
+  padding: 20px;
+
+  @media (max-width: 1366px) {
+    min-height: auto;
+    padding: 40px 20px;
+  }
 
   @media (max-width: 768px) {
-    height: auto;
     padding: 20px 10px;
   }
 `;
@@ -66,6 +71,11 @@ const AboutContent = styled.div`
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
   background-color: rgba(17, 17, 17, 0.9);
   overflow: hidden;
+
+  @media (max-width: 1366px) {
+    padding: 30px;
+    max-width: 90%;
+  }
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -82,8 +92,13 @@ const AboutTitle = styled.h2`
   animation: ${(props) => (props.isVisible ? fadeIn : "none")} 1.7s ease;
   color: #ff6347;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1366px) {
     font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
     margin-bottom: 20px;
   }
 `;
@@ -94,6 +109,10 @@ const AboutText = styled.p`
   margin-bottom: 10px;
   animation: ${(props) => (props.isVisible ? slideInRight : "none")}
     ${(props) => props.delay}s ease;
+
+  @media (max-width: 1366px) {
+    font-size: 1.1rem;
+  }
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -113,6 +132,10 @@ const SliderWrapper = styled.div`
   overflow: hidden;
   margin-top: 20px;
 
+  @media (max-width: 1366px) {
+    margin-top: 15px;
+  }
+
   @media (max-width: 768px) {
     margin-top: 10px;
   }
@@ -130,6 +153,10 @@ const SliderItems = styled.div`
         `
       : "animation: none;"}
 
+  @media (max-width: 1366px) {
+    gap: 10px;
+  }
+
   @media (max-width: 768px) {
     gap: 10px;
     animation: none; /* Disable scrolling animation on mobile */
@@ -141,6 +168,10 @@ const SliderImage = styled.img`
   width: 50px;
   height: auto;
   margin: 0 5px;
+
+  @media (max-width: 1366px) {
+    width: 45px;
+  }
 
   @media (max-width: 768px) {
     width: 40px;

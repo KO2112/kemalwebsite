@@ -138,7 +138,7 @@ const ProjectsSection = () => {
             <ProjectDescription>
               A personal website built using React.js to showcase my portfolio and projects.
             </ProjectDescription>
-            <ProjectLink href="kemalorhan.com" target="_blank">
+            <ProjectLink href="https://kemalorhan.com" target="_blank">
               View Project
             </ProjectLink>
           </ProjectCard>

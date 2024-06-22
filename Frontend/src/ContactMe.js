@@ -140,7 +140,7 @@ const ContactMeSection = () => {
         <ContactItem>
           <strong>LinkedIn:</strong>{" "}
           <ContactLink
-            href="https://www.linkedin.com/in/yagiz-orhan-28729b229/"
+            href="https://www.linkedin.com/in/kemal-orhan-28729b229/"
             target="_blank"
           >
             Kemal Orhan LinkedIn
@@ -151,7 +151,7 @@ const ContactMeSection = () => {
           <span>{isPhoneVisible ? "+44 7419208820" : "Click to reveal"}</span>
         </PhoneNumber>
         <ContactItem>
-          <Button onClick={() => window.open("https://drive.google.com/file/d/1I_fUhaYHjbvlarPUA8Hz1eWC0kKvLXSC/view?usp=drive_link")}>
+          <Button onClick={() => window.open("https://drive.google.com/file/d/1IqvY0VdD3DmasR10SnK1lZfeQHIu7z-Y/view?usp=drive_link")}>
             Download CV
           </Button>
         </ContactItem>

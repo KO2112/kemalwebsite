@@ -69,7 +69,7 @@ const App = () => {
     <Container>
       <BackgroundVideo autoPlay muted loop>
         <source
-          src="https://v3.cdnpk.net/videvo_files/video/free/2015-11/large_preview/Starfield_Fly_Through.mp4"
+          src="https://cdn.pixabay.com/video/2024/06/07/215697_large.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.

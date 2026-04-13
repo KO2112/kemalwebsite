@@ -1,16 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled, { keyframes, css } from "styled-components";
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
+import styled from "styled-components";
 
 const SectionWrapper = styled.div`
   position: relative;
@@ -45,10 +34,8 @@ const ProfileImage = styled.img`
 const Name = styled.h1`
   margin: 0;
   font-size: 2.5rem;
-  opacity: ${({ isVisible, isMobile }) => (isVisible || isMobile ? 1 : 0)};
-  transform: ${({ isVisible, isMobile }) =>
-    isVisible || isMobile ? "translateY(0)" : "translateY(20px)"};
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
 `;
 
 const ProfileTitle = styled.h2`
@@ -97,7 +84,7 @@ const Section = () => {
       <Content>
         <ProfileTitle>QA Automation Engineer / Software Developer</ProfileTitle>
         <ProfileImage
-          src="https://i.ibb.co/8rpcCLT/1716893197794.jpg"
+          src="1774439506154.jpg"
           alt="Profile Picture"
         />
         <Name isVisible={isVisible} isMobile={isMobile}>

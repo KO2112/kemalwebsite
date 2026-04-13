@@ -3,16 +3,14 @@ import styled from "styled-components";
 import Section from "./Section";
 import AboutMeSection from "./AboutMeSection";
 import WorkExperienceSection from "./WorkExperienceSection";
-import ProjectsSection from "./ProjectsSection";
 import ContactMeSection from "./ContactMe";
-import SignMyWebpage from "./SignMyWebpage";
+
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
   overflow: auto;
   overflow-x: hidden; 
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 `;
 
@@ -32,9 +30,8 @@ const App = () => {
     Section,
     AboutMeSection,
     WorkExperienceSection,
-    ProjectsSection,
     ContactMeSection,
-    SignMyWebpage,
+    
   ];
   
 

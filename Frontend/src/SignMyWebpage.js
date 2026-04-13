@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import SignatureCanvas from "react-signature-canvas";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
 
 // Define keyframes for animations
@@ -54,11 +54,6 @@ const ContentWrapper = styled.div`
   background-color: #222; /* Dark background color */
   padding: 40px;
   box-sizing: border-box;
-  animation: ${({ isVisible }) =>
-    isVisible &&
-    css`
-      ${fadeIn} 1s ease;
-    `};
 `;
 
 const Title = styled.h2`
@@ -172,10 +167,6 @@ const SignedBox = styled.div`
   position: relative;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-
-  &:hover {
-    animation: ${pulseAnimation} 1s ease-in-out infinite;
-  }
 `;
 
 const SignatureImage = styled.img`

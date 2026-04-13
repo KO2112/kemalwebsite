@@ -1,26 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const colorChange = keyframes`
-  0% { color: #ff6347; }
-  20% { color: #e5533d; }
-  40% { color: #f0a500; }
-  60% { color: #32cd32; }
-  80% { color: #1e90ff; }
-  100% { color: #ff6347; }
-`;
 
 const ContactSectionWrapper = styled.div`
   width: 100%;
@@ -45,11 +25,6 @@ const ContentWrapper = styled.div`
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5));
   padding: 50px 30px;
   box-sizing: border-box;
-  ${({ isVisible, isMobile }) =>
-    isVisible && !isMobile &&
-    css`
-      animation: ${fadeIn} 1s ease;
-    `};
 `;
 
 const Title = styled.h2`
@@ -69,7 +44,6 @@ const ContactItem = styled.div`
 const ContactLink = styled.a`
   text-decoration: none;
   font-size: 1.5rem;
-  animation: ${colorChange} 2s infinite;
 `;
 
 const Button = styled.button`
@@ -150,11 +124,7 @@ const ContactMeSection = () => {
           <strong>Phone Number (click to reveal):</strong>{" "}
           <span>{isPhoneVisible ? "+44 7419208820" : "Click to reveal"}</span>
         </PhoneNumber>
-        <ContactItem>
-          <Button onClick={() => window.open("https://drive.google.com/file/d/1IqvY0VdD3DmasR10SnK1lZfeQHIu7z-Y/view?usp=drive_link")}>
-            Download CV
-          </Button>
-        </ContactItem>
+       
       </ContentWrapper>
     </ContactSectionWrapper>
   );

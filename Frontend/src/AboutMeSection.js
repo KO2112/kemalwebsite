@@ -1,84 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
-
-const slideInLeft = keyframes`
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
-const slideInRight = keyframes`
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
-const scrolling = keyframes`
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-`;
-
-const float = keyframes`
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-`;
-
-const glow = keyframes`
-  0% {
-    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255, 99, 71, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
-  }
-`;
-
-const pulse = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
 
 const AboutMeSectionWrapper = styled.div`
   position: relative;
@@ -140,7 +62,6 @@ const AboutContent = styled.div`
   border: 1px solid rgba(255, 99, 71, 0.1);
   position: relative;
   overflow: hidden;
-  animation: ${glow} 4s infinite ease-in-out;
   
   &:before {
     content: '';
@@ -172,8 +93,6 @@ const AboutTitle = styled.h2`
   display: inline-block;
   position: relative;
   text-shadow: 0 0 10px rgba(255, 99, 71, 0.3);
-  animation: ${(props) =>
-    props.isVisible && !props.isMobile ? fadeIn : "none"} 1.5s ease;
     
   &:after {
     content: '';
@@ -202,13 +121,6 @@ const AboutText = styled.p`
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 15px;
-  animation: ${(props) =>
-    props.isVisible && !props.isMobile
-      ? props.index % 2 === 0
-        ? slideInLeft
-        : slideInRight
-      : "none"}
-    ${(props) => 0.4 + props.index * 0.2}s ease;
   padding: 10px;
   border-radius: 5px;
   position: relative;
@@ -259,8 +171,6 @@ const SkillsTitle = styled.h3`
   color: #ff6347;
   opacity: 0.9;
   text-align: center;
-  animation: ${(props) =>
-    props.isVisible && !props.isMobile ? fadeIn : "none"} 1.8s ease;
 `;
 
 const SkillsContainer = styled.div`
@@ -289,16 +199,11 @@ const SkillBadge = styled.div`
   background: rgba(30, 30, 30, 0.7);
   border: 1px solid rgba(255, 99, 71, 0.2);
   transition: all 0.3s ease;
-  animation: ${fadeIn} ${props => 1.8 + props.index * 0.1}s ease;
   
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(255, 99, 71, 0.2);
     background: rgba(40, 40, 40, 0.8);
-    
-    img {
-      animation: ${pulse} 1s infinite ease-in-out;
-    }
   }
   
   @media (max-width: 768px) {

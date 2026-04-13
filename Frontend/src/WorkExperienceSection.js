@@ -1,51 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const slideInLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const slideInRight = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const pulse = keyframes`
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 99, 71, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 99, 71, 0);
-  }
-`;
 
 const WorkExperienceSectionWrapper = styled.div`
   width: 100%;
@@ -121,12 +76,6 @@ const WorkExperienceTitle = styled.h2`
     border-radius: 2px;
     box-shadow: 0 0 10px rgba(255,99,71,0.6);
   }
-  
-  animation: ${({ isVisible }) =>
-    isVisible &&
-    css`
-      ${fadeIn} 0.8s ease;
-    `};
 `;
 
 const TimelineItem = styled.div`
@@ -140,12 +89,6 @@ const TimelineItem = styled.div`
     justify-content: flex-start;
     padding-left: 60px;
   }
-  
-  animation: ${({ isVisible, position, delay }) =>
-    isVisible &&
-    css`
-      ${position === 'left' ? slideInLeft : slideInRight} ${delay}s ease;
-    `};
 `;
 
 const TimelineDot = styled.div`
@@ -158,7 +101,6 @@ const TimelineDot = styled.div`
   border-radius: 50%;
   z-index: 2;
   box-shadow: 0 0 10px rgba(255,99,71,0.8);
-  animation: ${pulse} 2s infinite;
   
   @media (max-width: 768px) {
     left: 32px;
@@ -293,10 +235,20 @@ const WorkExperienceSection = () => {
 
   const experiences = [
     {
+      company: "CreateFuture / Fanduel",
+      title: "Senior QA Engineer",
+      dates: "2025-08 to Current",
+      position: "right",
+      delay: 0.1,
+      responsibilities:
+        "Working at the world's largest iGaming company, validating Java version upgrades across multiple services. Maintaining and fixing automation frameworks such as Cypress and Playwright, supporting newly introduced automation suites, performing API testing using JSON-RPC, DB & Manual testing.",
+      tags: ["Java", "Cypress", "Playwright", "API Testing", "JSON-RPC", "DB Testing", "Manual Testing"]
+    },
+    {
       company: "Arcadis / IBM",
       title: "QA Consultant",
       dates: "2024 to 2025",
-      position: "right",
+      position: "left",
       delay: 0.3,
       responsibilities:
         "Worked on the Amtrak project with IBM, focusing on mobile, web, and API testing. Ensured quality and functionality across platforms as part of a $229M IT services contract targeting $85M in savings over seven years.",
@@ -306,7 +258,7 @@ const WorkExperienceSection = () => {
       company: "Lenvi / Equinti",
       title: "QA Automation Team Lead",
       dates: "2023 to 2024",
-      position: "left",
+      position: "right",
       delay: 0.5,
       responsibilities:
         "Managed automation frameworks for multiple clients, specializing in Playwright and Cypress. Expertise includes API testing, manual testing, and UI testing using Java, Selenium, RestAssured, JUnit, and Maven. Fostered communication with product owners and developers to integrate testing seamlessly into SDLC, ensuring high-quality software delivery.",
@@ -316,7 +268,7 @@ const WorkExperienceSection = () => {
       company: "OAK Technology",
       title: "QA Automation Engineer",
       dates: "2021 to 2023",
-      position: "right",
+      position: "left",
       delay: 0.7,
       responsibilities:
         "Leveraged Java and Selenium WebDriver for comprehensive software testing. Developed and maintained automation frameworks using JUnit, Maven, and Cucumber. Contributed to Agile SDLC/STLC stages, employing Jenkins for CI/CD and AWS for remote testing. Utilized Jira, Git/GitHub, and REST Assured for project management, version control, and API testing.",
@@ -326,7 +278,7 @@ const WorkExperienceSection = () => {
       company: "Equipment4motorcycle",
       title: "QA Automation Engineer",
       dates: "2019 to 2021",
-      position: "left",
+      position: "right",
       delay: 0.9,
       responsibilities:
         "Developed hybrid automation frameworks using Cypress and Selenium for web testing. Collaborated on mobile testing with Appium and contributed to performance testing with JMeter.",

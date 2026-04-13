@@ -1,0 +1,12 @@
+{
+  "name": "kemalwebsite",
+  "version": "1.0.0",
+  "description": "Full-stack personal website with React frontend and Express backend",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix Frontend start",
+    "build": "npm --prefix Frontend build",
+    "test": "npm --prefix Frontend test",
+    "install-all": "npm install && npm --prefix Frontend install"
+  }
+}

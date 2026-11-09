@@ -235,64 +235,74 @@ const WorkExperienceSection = () => {
 
   const experiences = [
     {
-      company: "CreateFuture / Fanduel",
-      title: "Senior QA Engineer",
-      dates: "2025-08 to Current",
+      company: "Armoni",
+      title: "Senior QA Automation Lead",
+      dates: "2026-02 to Current",
       position: "right",
       delay: 0.1,
       responsibilities:
-        "Working at the world's largest iGaming company, validating Java version upgrades across multiple services. Maintaining and fixing automation frameworks such as Cypress and Playwright, supporting newly introduced automation suites, performing API testing using JSON-RPC, DB & Manual testing.",
-      tags: ["Java", "Cypress", "Playwright", "API Testing", "JSON-RPC", "DB Testing", "Manual Testing"]
+        "Led the transition to AI-assisted QA for healthcare software supporting people with visible and invisible disabilities across three continents. Built and maintained automation with Playwright, Postman, Azure, and Appium, and tested AI and LLM-powered applications.",
+      tags: ["AI in Testing", "LLM Testing", "Playwright", "Postman", "Appium", "Azure"]
     },
     {
-      company: "Armoni",
-      title: "Senior QA Automation Lead",
-      dates: "2025-03 to 2025-08",
+      company: "CreateFuture / FanDuel",
+      title: "Senior QA Engineer",
+      dates: "2025-08 to 2026-02",
       position: "left",
       delay: 0.2,
       responsibilities:
-        "Led QA automation initiatives at one of Europe's largest clinics for both visible and invisible disabilities, operating across three continents. Leveraged Selenium, Playwright, Java, TypeScript, API testing, RestAssured, and Appium for comprehensive test automation. Specialized in mobile testing, performance testing using industry-standard tools, and Azure cloud infrastructure.",
-      tags: ["Selenium", "Playwright", "Java", "TypeScript", "API Testing", "RestAssured", "Appium", "Mobile Testing", "Performance Testing", "Postman", "Azure"]
+        "Helped make QA automation more dependable and efficient across a business with 13 separate automation frameworks. Validated Java version upgrades across services, maintained Cypress and Playwright frameworks, supported new automation suites, and performed JSON-RPC API, database, and manual testing.",
+      tags: ["AI in Testing", "Java", "Cypress", "Playwright", "JSON-RPC", "API Testing", "Database Testing"]
     },
     {
-      company: "Arcadis / IBM",
-      title: "QA Consultant",
-      dates: "2024 to 2025",
+      company: "RaSoft",
+      title: "Senior QA Engineer",
+      dates: "2025-03 to 2025-08",
       position: "right",
       delay: 0.3,
       responsibilities:
-        "Worked on the Amtrak project with IBM, focusing on mobile, web, and API testing. Ensured quality and functionality across platforms as part of a $229M IT services contract targeting $85M in savings over seven years.",
-      tags: ["Mobile Testing", "Web Testing", "API Testing", "Quality Assurance"]
+        "Delivered UI and API automation with Playwright and Cypress using TypeScript, alongside Postman and REST Assured testing. Also performed SQL database, Appium mobile, and JMeter performance testing, and supported CI/CD through Azure DevOps.",
+      tags: ["Playwright", "Cypress", "TypeScript", "Postman", "REST Assured", "Appium", "JMeter", "Azure DevOps"]
     },
     {
-      company: "Lenvi / Equinti",
-      title: "QA Automation Team Lead",
-      dates: "2023 to 2024",
+      company: "IBM / Arcadis",
+      title: "QA Consultant",
+      dates: "2024-09 to 2025-03",
       position: "left",
       delay: 0.5,
       responsibilities:
-        "Managed automation frameworks for multiple clients, specializing in Playwright and Cypress. Expertise includes API testing, manual testing, and UI testing using Java, Selenium, RestAssured, JUnit, and Maven. Fostered communication with product owners and developers to integrate testing seamlessly into SDLC, ensuring high-quality software delivery.",
-      tags: ["Playwright", "Cypress", "Java", "Selenium", "Team Lead"]
+        "Helped move QA toward AI-assisted testing on the Arcadis engagement. Performed automation and API testing with Selenium, REST Assured, Appium, and Postman, and worked with IBM Maximo.",
+      tags: ["AI in Testing", "Selenium", "REST Assured", "Appium", "Postman", "Maximo"]
+    },
+    {
+      company: "Lenvi / Equiniti",
+      title: "QA Automation Team Lead",
+      dates: "2023-09 to 2024-09",
+      position: "right",
+      delay: 0.7,
+      responsibilities:
+        "Managed client automation frameworks using Playwright and Cypress, covering API, manual, and UI testing. Also used Java, Selenium, REST Assured, JUnit, and Maven to support efficient testing.",
+      tags: ["Playwright", "Cypress", "Java", "Selenium", "REST Assured", "JUnit", "Maven", "Team Lead"]
     },
     {
       company: "OAK Technology",
       title: "QA Automation Engineer",
-      dates: "2021 to 2023",
-      position: "right",
-      delay: 0.7,
-      responsibilities:
-        "Leveraged Java and Selenium WebDriver for comprehensive software testing. Developed and maintained automation frameworks using JUnit, Maven, and Cucumber. Contributed to Agile SDLC/STLC stages, employing Jenkins for CI/CD and AWS for remote testing. Utilized Jira, Git/GitHub, and REST Assured for project management, version control, and API testing.",
-      tags: ["Java", "Selenium", "Jenkins", "AWS", "Git"]
-    },
-    {
-      company: "Equipment4motorcycle",
-      title: "QA Automation Engineer",
-      dates: "2019 to 2021",
+      dates: "2021-06 to 2023-09",
       position: "left",
       delay: 0.9,
       responsibilities:
-        "Developed hybrid automation frameworks using Cypress and Selenium for web testing. Collaborated on mobile testing with Appium and contributed to performance testing with JMeter.",
-      tags: ["Cypress", "Selenium", "Appium", "JMeter"]
+        "Developed and maintained test automation frameworks using Java, Selenium WebDriver, and JUnit, and performed both manual and automated testing.",
+      tags: ["Java", "Selenium WebDriver", "JUnit", "Automation Testing", "Manual Testing"]
+    },
+    {
+      company: "E4M",
+      title: "QA Automation Engineer",
+      dates: "2019-03 to 2021-05",
+      position: "right",
+      delay: 1.1,
+      responsibilities:
+        "Built and maintained end-to-end web tests with Cypress and Selenium, and contributed to performance testing with JMeter. Also worked with Playwright, TypeScript, Java, REST Assured, API testing, and mobile testing.",
+      tags: ["Cypress", "Selenium", "Playwright", "TypeScript", "Java", "API Testing", "Mobile Testing", "JMeter"]
     },
   ];
 

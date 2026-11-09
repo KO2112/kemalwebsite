@@ -262,13 +262,12 @@ const AboutMeSection = () => {
   }, []);
 
   const aboutTextContent = [
-    "I have over <Highlight>7+ years</Highlight> of experience as a QA Automation Engineer - SDET and <Highlight>Software development</Highlight>, also, have worked extensively on automation, mostly website, API, mobile, and web services applications.",
-    "My knowledge and implementation skills in the <Highlight>Software Development Life Cycle (SDLC)</Highlight> and <Highlight>Software Testing Life Cycle (STLC)</Highlight> are excellent.",
-    "I have experience working on <Highlight>Agile projects</Highlight> and have worked closely with product owners, attending various ceremonies such as sprint planning, Scrum, backlog grooming, sprint review, and retrospective.",
-    "I have proven abilities in designing and implementing automation frameworks using tools such as <Highlight>Java, Selenium WebDriver, Junit, TestNG, Maven,</Highlight> and <Highlight>Jenkins</Highlight>.",
-    "I have gained experience working with various tools, including <Highlight>Java, Selenium WebDriver, Cypress, Playwright, Appium, Maven, Cucumber, TestNG, JUnit, SQL, Git,</Highlight> and many others.",
-    "I also have good knowledge of <Highlight>Springboot, React, Unity</Highlight> applications and am able to participate in large and multi-platform projects as well.",
-    "I'm a good communicator, I have good analytical and communication skills and can work independently with minimal supervision while also being able to function effectively as part of a team."
+    "I have over <Highlight>8 years of experience</Highlight> as a QA Automation Engineer, working extensively across web, API, mobile, and web services applications.",
+    "I have helped companies including <Highlight>FanDuel, CreateFuture, Armoni, and IBM</Highlight> transition their QA processes with AI, using LLM-assisted test generation and maintenance, AI testing tools, and LLM application testing.",
+    "I have excellent knowledge of the <Highlight>Software Development Life Cycle (SDLC)</Highlight> and <Highlight>Software Testing Life Cycle (STLC)</Highlight>, and experience working in Agile teams with product owners through planning, Scrum, backlog grooming, and sprint reviews.",
+    "I design and implement automation frameworks using <Highlight>Selenium WebDriver, Cypress, Playwright, JUnit, TestNG, Java, C#, JavaScript, and TypeScript</Highlight>, and apply AI and LLMs to testing workflows.",
+    "My testing experience spans <Highlight>finance, automotive, healthcare, and general web applications</Highlight>, including UI, API, mobile, and web services testing.",
+    "I bring strong analytical, problem-solving, and communication skills, and work effectively both independently and as part of a team, including in high-pressure environments."
   ];
 
   const skills = [
